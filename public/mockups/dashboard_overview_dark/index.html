@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Digital Estate - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#304a55",
+              "on-surface-variant": "#424654",
+              "on-primary-fixed-variant": "#00458f",
+              "surface-container-high": "#d5ecf8",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#cbe7f5",
+              "outline-variant": "#c3c6d6",
+              "on-primary-container": "#c8d9ff",
+              "outline": "#737785",
+              "on-tertiary-container": "#84ebda",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#1e333c",
+              "primary": "#004590",
+              "tertiary": "#005148",
+              "tertiary-fixed": "#8df5e4",
+              "on-secondary-fixed": "#021f29",
+              "on-surface": "#071e27",
+              "surface-container-low": "#e6f6ff",
+              "surface-dim": "#c7dde9",
+              "on-secondary": "#ffffff",
+              "secondary": "#48626e",
+              "on-secondary-container": "#4e6874",
+              "background": "#f3faff",
+              "inverse-primary": "#abc7ff",
+              "error-container": "#ffdad6",
+              "surface-variant": "#cfe6f2",
+              "inverse-on-surface": "#dff4ff",
+              "on-tertiary-fixed-variant": "#005048",
+              "primary-fixed-dim": "#abc7ff",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed": "#00201c",
+              "tertiary-fixed-dim": "#70d8c8",
+              "secondary-fixed": "#cbe7f5",
+              "surface-container-highest": "#cfe6f2",
+              "primary-fixed": "#d7e2ff",
+              "primary-container": "#265dad",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#001b3f",
+              "secondary-fixed-dim": "#afcbd8",
+              "surface": "#f3faff",
+              "tertiary-container": "#006b60",
+              "surface-bright": "#f3faff",
+              "surface-tint": "#255dad",
+              "surface-container": "#dbf1fe",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-background": "#071e27"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .dark body {
+            background-color: #020617;
+            color: #f8fafc;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background dark:bg-slate-950 text-on-surface dark:text-slate-50 min-h-screen pb-32 md:pb-0">
+<!-- MOCKUP_NAV_START -->
+<nav id="mockup-nav" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#004590;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 1rem;height:2.75rem;font-family:'Inter',sans-serif;font-size:0.8125rem;gap:0.5rem;box-sizing:border-box;">
+  <a href="../index.html" style="color:rgba(255,255,255,0.85);text-decoration:none;display:flex;align-items:center;gap:0.3rem;white-space:nowrap;padding:0.25rem 0.5rem;border-radius:0.375rem;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">← Index</a>
+  <span style="font-weight:600;color:white;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;text-align:center;">Dashboard (Dark)</span>
+  <div style="display:flex;gap:0.25rem;align-items:center;"><a href="../dashboard_overview/index.html" style="color:rgba(255,255,255,0.85);text-decoration:none;display:flex;align-items:center;gap:0.3rem;white-space:nowrap;padding:0.25rem 0.5rem;border-radius:0.375rem;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">← Prev</a><a href="../property_details/index.html" style="color:rgba(255,255,255,0.85);text-decoration:none;display:flex;align-items:center;gap:0.3rem;white-space:nowrap;padding:0.25rem 0.5rem;border-radius:0.375rem;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">Next →</a></div>
+</nav>
+<style>#mockup-nav + * { margin-top: 0 !important; } body { padding-top: 2.75rem !important; }</style>
+<!-- MOCKUP_NAV_END -->
+
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-blue-50/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-between items-center w-full px-6 py-4 max-w-full border-b border-transparent dark:border-slate-800">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Professional male property manager profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFcGqGCLSuvYfkj-w5A02e1EUJwifmA4MjMkluTfv3OJc-vlbZWTD5a6HcqTApyE5v0LSov7wretIzXPVBT7z0BNRoJQ-_XggC0LarpMf4riH8VGhL-KDGA_fymHrOTvi3t_nxZwmsRUnLdTjqQLIdHsyLqLym-Yue2JtcbP86cdZ26E3kccBs2y3DkYuK5ul7KG_eaXa-ZRvljgE8vR-EGSJ4LXEUqABqwQnWJsvOAX0uuYP5sbG9H4q1tR25pcBBUkZvbS8COmqz"/>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-blue-900 dark:text-blue-100">The Digital Estate</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-blue-100/50 dark:hover:bg-slate-800/50 transition-colors text-blue-900 dark:text-blue-100 interaction-scale">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full bg-inverse-surface dark:bg-slate-100 text-inverse-on-surface dark:text-slate-950 hover:opacity-90 transition-opacity" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined" data-icon="light_mode">light_mode</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-8 md:py-12 space-y-12">
+<!-- Welcome & High Level Metrics -->
+<section class="space-y-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<p class="label-sm text-primary dark:text-blue-400 font-bold uppercase tracking-widest mb-2">Executive Overview</p>
+<h2 class="text-3xl md:text-5xl font-bold text-on-surface dark:text-white tracking-tight">Portfolio Performance</h2>
+</div>
+<div class="flex items-center gap-2 text-tertiary dark:text-emerald-400 font-semibold bg-tertiary-fixed dark:bg-emerald-950/50 border border-transparent dark:border-emerald-500/20 px-4 py-2 rounded-full text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span>+12.4% Revenue Growth</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Total Assets -->
+<div class="bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-8 shadow-sm dark:shadow-none border border-transparent dark:border-slate-800">
+<p class="text-secondary dark:text-slate-400 font-medium mb-1">Total Asset Value</p>
+<p class="text-4xl font-bold text-primary dark:text-blue-400 tracking-tight">$42.8M</p>
+<div class="mt-4 flex items-center gap-2">
+<div class="h-1.5 flex-1 bg-surface-container-highest dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary dark:bg-blue-500 w-[78%]"></div>
+</div>
+<span class="text-xs font-bold text-on-surface-variant dark:text-slate-400">78% Target</span>
+</div>
+</div>
+<!-- Occupancy -->
+<div class="bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-8 shadow-sm dark:shadow-none border border-transparent dark:border-slate-800">
+<p class="text-secondary dark:text-slate-400 font-medium mb-1">Portfolio Occupancy</p>
+<p class="text-4xl font-bold text-primary dark:text-blue-400 tracking-tight">96.2%</p>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-low dark:bg-slate-800 text-on-secondary-container dark:text-slate-300 text-[10px] font-bold uppercase rounded">142 Units</span>
+<span class="px-2 py-1 bg-error-container dark:bg-red-950/50 text-on-error-container dark:text-red-400 text-[10px] font-bold uppercase rounded">4 Vacant</span>
+</div>
+</div>
+<!-- Rent Collection -->
+<div class="bg-primary-container dark:bg-blue-700 text-on-primary rounded-xl p-8 shadow-sm relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-on-primary-container dark:text-blue-100 font-medium mb-1 opacity-80">Rent Collected (Oct)</p>
+<p class="text-4xl font-bold tracking-tight text-white">$284,500</p>
+<p class="mt-4 text-sm font-medium text-on-primary-container dark:text-blue-100">92% of scheduled payments</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined !text-9xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Insights & Tasks -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- AI Insights Card (Large span) -->
+<div class="lg:col-span-7 bg-surface-container-low dark:bg-slate-900 rounded-xl p-8 flex flex-col justify-between border border-transparent dark:border-slate-800">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary dark:text-blue-400" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="text-xl font-bold dark:text-white">Estate Intelligence</h3>
+</div>
+<p class="text-lg text-on-surface-variant dark:text-slate-300 leading-relaxed mb-8">
+                        Based on local market trends, units at <span class="font-bold text-primary dark:text-blue-400">Blue Horizon Towers</span> are currently 8% below average market rate. Adjusting leases in Q1 could yield an additional <span class="text-tertiary dark:text-emerald-400 font-bold">$14,200</span> monthly.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary dark:bg-blue-600 hover:bg-primary-container dark:hover:bg-blue-500 text-white px-6 py-3 rounded-full font-bold text-sm transition-all flex items-center gap-2">
+                        View Analysis <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="bg-surface-container-highest dark:bg-slate-800 text-on-surface dark:text-slate-300 px-6 py-3 rounded-full font-bold text-sm hover:bg-surface-variant dark:hover:bg-slate-700 transition-all">
+                        Dismiss
+                    </button>
+</div>
+</div>
+<!-- Urgent To-Dos -->
+<div class="lg:col-span-5 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-8 shadow-sm dark:shadow-none border border-transparent dark:border-slate-800">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold dark:text-white">Urgent Actions</h3>
+<span class="bg-error dark:bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded-full">3 PRIORITY</span>
+</div>
+<div class="space-y-4">
+<!-- Task Item -->
+<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low dark:hover:bg-slate-800 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-error-container dark:bg-red-950/50 text-error dark:text-red-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="plumbing">plumbing</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface dark:text-slate-100 text-sm">Emergency Leak: Apt 402</p>
+<p class="text-xs text-on-surface-variant dark:text-slate-400">Oak Ridge Estate • Reported 2h ago</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant dark:text-slate-600 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Task Item -->
+<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low dark:hover:bg-slate-800 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest dark:bg-slate-800 text-primary dark:text-blue-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="contract">contract</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface dark:text-slate-100 text-sm">Lease Renewal Pending</p>
+<p class="text-xs text-on-surface-variant dark:text-slate-400">The Pinnacle • Expiring in 3 days</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant dark:text-slate-600 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Task Item -->
+<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low dark:hover:bg-slate-800 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest dark:bg-slate-800 text-primary dark:text-blue-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface dark:text-slate-100 text-sm">Vendor Payment Overdue</p>
+<p class="text-xs text-on-surface-variant dark:text-slate-400">Metro Landscaping • $2,400</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant dark:text-slate-600 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Rent Collection Detail & Property List -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Data Viz Placeholder -->
+<div class="lg:col-span-1 bg-surface-container-lowest dark:bg-slate-900 rounded-xl p-8 shadow-sm dark:shadow-none border border-transparent dark:border-slate-800">
+<h3 class="text-xl font-bold mb-6 dark:text-white">Cashflow Health</h3>
+<div class="h-48 w-full flex items-end justify-between gap-2 px-2">
+<div class="w-full bg-surface-container-highest dark:bg-slate-800 rounded-t-lg h-[40%]"></div>
+<div class="w-full bg-surface-container-highest dark:bg-slate-800 rounded-t-lg h-[60%]"></div>
+<div class="w-full bg-surface-container-highest dark:bg-slate-800 rounded-t-lg h-[55%]"></div>
+<div class="w-full bg-primary dark:bg-blue-600 rounded-t-lg h-[85%]"></div>
+<div class="w-full bg-surface-container-highest dark:bg-slate-800 rounded-t-lg h-[70%]"></div>
+<div class="w-full bg-surface-container-highest dark:bg-slate-800 rounded-t-lg h-[45%]"></div>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/10 dark:border-slate-800 flex justify-between">
+<div>
+<p class="text-xs text-on-surface-variant dark:text-slate-400 uppercase font-bold tracking-tighter">Gross Income</p>
+<p class="text-lg font-bold text-on-surface dark:text-slate-100">$312K</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-on-surface-variant dark:text-slate-400 uppercase font-bold tracking-tighter">Operating Exp</p>
+<p class="text-lg font-bold text-on-surface dark:text-slate-100">$84K</p>
+</div>
+</div>
+</div>
+<!-- Featured Properties -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="text-xl font-bold dark:text-white">Top Performing Assets</h3>
+<button class="text-primary dark:text-blue-400 text-sm font-bold flex items-center gap-1">View All <span class="material-symbols-outlined text-xs" data-icon="open_in_new">open_in_new</span></button>
+</div>
+<div class="space-y-4">
+<!-- Property Item -->
+<div class="bg-surface-container-lowest dark:bg-slate-900 p-4 rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-slate-800 flex items-center gap-6">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+<img alt="Property" class="w-full h-full object-cover" data-alt="Modern luxury apartment building exterior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxAYvQ21RD3sTPdEBQqxRZYdG4XWWCfK-zVUUpzmqUh4C4399Id_Qe4LWB7cW3fQxtzGeJgooIEJ6SMnTX15b-yebXHR-o2eM0shtQVi2p21LwTZOmZNry9Pf5row4J12ScCRTIoAiJCyS2KzXcBSyhKuvbs3XfDT_afSK6jOld1QEOQYii2Bbc7_yPqCOaKNE0VdaMg52skWCviEBiFxsfZb5WbcxiCLOxXTVjOJBFsow2yvZBX8PWWLiXGc0CM3lQzICQsb9U4rd"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface dark:text-slate-100 text-lg">Blue Horizon Towers</p>
+<p class="text-sm text-on-surface-variant dark:text-slate-400 mb-3">Downtown District • 42 Units</p>
+<div class="flex gap-3">
+<span class="px-2 py-0.5 bg-tertiary-fixed dark:bg-emerald-950 text-on-tertiary-fixed-variant dark:text-emerald-400 text-[10px] font-bold uppercase rounded border border-transparent dark:border-emerald-500/20">100% Occupancy</span>
+<span class="px-2 py-0.5 bg-surface-container-low dark:bg-slate-800 text-on-secondary-container dark:text-slate-300 text-[10px] font-bold uppercase rounded">Top ROI</span>
+</div>
+</div>
+<div class="text-right hidden md:block">
+<p class="text-xs text-on-surface-variant dark:text-slate-400 font-bold uppercase mb-1">Monthly Yield</p>
+<p class="text-xl font-bold text-primary dark:text-blue-400">$112,400</p>
+</div>
+</div>
+<!-- Property Item -->
+<div class="bg-surface-container-lowest dark:bg-slate-900 p-4 rounded-xl shadow-sm dark:shadow-none border border-transparent dark:border-slate-800 flex items-center gap-6">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+<img alt="Property" class="w-full h-full object-cover" data-alt="Sleek glass high-rise office building" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU2iMq0cMcUNaB3-lGPj_SjDoWGbF-wvLgoMlYkqEqxc2LWu1zKTR76LniesmWYTe-f1fO2zov5KPtRSHXLfO8CMbPt7faialEHnAmHYkwfeQlMzTtH1CecpelSxF7LhZwszD3EtWCUZbq1JwBrUHsFoME2cf0VawRqReKYBoZMekG-z01xoGHCJV670fGK6jowFCqRtvH0bu5wh9xEPWfAPoDpslxQ2nGOBLuoOjBIht7o3jq6bSbIV_RGleP-fLVwhURB6UpQKyw"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface dark:text-slate-100 text-lg">The Pinnacle Suites</p>
+<p class="text-sm text-on-surface-variant dark:text-slate-400 mb-3">Financial Center • 28 Units</p>
+<div class="flex gap-3">
+<span class="px-2 py-0.5 bg-secondary-container dark:bg-slate-800 text-on-secondary-container dark:text-slate-300 text-[10px] font-bold uppercase rounded">94% Occupancy</span>
+<span class="px-2 py-0.5 bg-surface-container-low dark:bg-slate-800 text-on-secondary-container dark:text-slate-300 text-[10px] font-bold uppercase rounded">Stable</span>
+</div>
+</div>
+<div class="text-right hidden md:block">
+<p class="text-xs text-on-surface-variant dark:text-slate-400 font-bold uppercase mb-1">Monthly Yield</p>
+<p class="text-xl font-bold text-primary dark:text-blue-400">$86,900</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg shadow-[0_-4px_20px_0_rgba(7,30,39,0.06)] dark:shadow-none border-t border-transparent dark:border-slate-800 rounded-t-3xl">
+<a class="flex flex-col items-center justify-center bg-blue-100 dark:bg-blue-500/20 text-blue-900 dark:text-blue-400 rounded-2xl px-5 py-2 transition-transform duration-150 scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[11px] font-bold uppercase tracking-wider Inter">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-700 dark:hover:text-blue-400" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="text-[11px] font-bold uppercase tracking-wider Inter">Properties</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-700 dark:hover:text-blue-400" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="text-[11px] font-bold uppercase tracking-wider Inter">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-700 dark:hover:text-blue-400 relative" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-[11px] font-bold uppercase tracking-wider Inter">Inbox</span>
+<span class="absolute top-2 right-4 w-2 h-2 bg-error rounded-full"></span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-blue-700 dark:hover:text-blue-400" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[11px] font-bold uppercase tracking-wider Inter">Settings</span>
+</a>
+</nav>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-8 w-14 h-14 bg-gradient-to-br from-primary to-primary-container dark:from-blue-600 dark:to-blue-800 text-white rounded-full shadow-xl dark:shadow-blue-900/20 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 z-40">
+<span class="material-symbols-outlined !text-3xl" data-icon="add">add</span>
+</button>
+</body></html>

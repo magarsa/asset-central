@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asset Central — UI Mockups</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #004590;
+      --primary-container: #d5e3ff;
+      --on-primary: #ffffff;
+      --surface: #f8f9fc;
+      --surface-container: #eef0f4;
+      --surface-container-high: #e4e6ec;
+      --on-surface: #191c20;
+      --on-surface-variant: #43474e;
+      --outline-variant: #c3c6cf;
+      --success: #005148;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--surface);
+      color: var(--on-surface);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--surface-container-high);
+      padding: 0 2rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo-icon {
+      width: 2rem;
+      height: 2rem;
+      background: var(--primary);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .logo-text {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1.125rem;
+      color: var(--on-surface);
+    }
+
+    .logo-badge {
+      margin-left: 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-container);
+      padding: 0.125rem 0.5rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Main */
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+
+    .page-title {
+      font-family: 'Manrope', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Section */
+    .section-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Card */
+    .card {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,69,144,0.12);
+    }
+
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top;
+      background: var(--surface-container);
+      display: block;
+    }
+
+    .card-thumb-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, var(--surface-container) 0%, var(--primary-container) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-thumb-placeholder .material-symbols-outlined {
+      font-size: 2.5rem;
+      color: var(--primary);
+      opacity: 0.4;
+    }
+
+    .card-body {
+      padding: 1rem 1.25rem 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .card-name {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: var(--on-surface);
+    }
+
+    .card-desc {
+      font-size: 0.8125rem;
+      color: var(--on-surface-variant);
+      line-height: 1.5;
+    }
+
+    /* Variant pair */
+    .variant-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .variant-pair .card-name { font-size: 0.875rem; }
+
+    .theme-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      padding: 0.125rem 0.5rem;
+      border-radius: 999px;
+      margin-top: 0.25rem;
+      width: fit-content;
+    }
+
+    .theme-pill.light {
+      background: #fef9ee;
+      color: #7a5900;
+    }
+
+    .theme-pill.dark {
+      background: #1e1e1e;
+      color: #c8c8d0;
+    }
+
+    .theme-pill .material-symbols-outlined {
+      font-size: 0.75rem;
+    }
+
+    /* Stats bar */
+    .stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding: 1.25rem 1.5rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .stat-item { display: flex; flex-direction: column; gap: 0.25rem; }
+    .stat-value { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--primary); }
+    .stat-label { font-size: 0.75rem; color: var(--on-surface-variant); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-icon">
+      <span class="material-symbols-outlined" style="font-size:1.1rem">apartment</span>
+    </div>
+    <span class="logo-text">Asset Central</span>
+    <span class="logo-badge">Mockups</span>
+  </header>
+
+  <main>
+    <h1 class="page-title">UI Mockup Library</h1>
+    <p class="page-subtitle">14 pages · 10 feature areas · Light &amp; dark variants</p>
+
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-value">14</span>
+        <span class="stat-label">Mockup pages</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">10</span>
+        <span class="stat-label">Feature areas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">4</span>
+        <span class="stat-label">Dark variants</span>
+      </div>
+    </div>
+
+    <!-- Pages with light + dark variants -->
+    <div class="section-label">Pages with light &amp; dark variants</div>
+    <div class="grid">
+
+      <!-- Dashboard Overview -->
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:0.9375rem; color:var(--on-surface-variant); padding: 0 0.25rem;">Dashboard Overview</div>
+        <div class="variant-pair">
+          <a href="dashboard_overview/index.html" class="card">
+            <img src="dashboard_overview/screen.png" class="card-thumb" alt="Dashboard Overview" loading="lazy" />
+            <div class="card-body">
+              <span class="card-name">Overview</span>
+              <span class="theme-pill light"><span class="material-symbols-outlined">light_mode</span>Light</span>
+            </div>
+          </a>
+          <a href="dashboard_overview_dark/index.html" class="card" style="background:#1a1c20;">
+            <img src="dashboard_overview_dark/screen.png" class="card-thumb" alt="Dashboard Overview Dark" loading="lazy" />
+            <div class="card-body" style="background:#1a1c20;">
+              <span class="card-name" style="color:#e2e2e9;">Overview</span>
+              <span class="theme-pill dark"><span class="material-symbols-outlined">dark_mode</span>Dark</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Property Details -->
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:0.9375rem; color:var(--on-surface-variant); padding: 0 0.25rem;">Property Details</div>
+        <div class="variant-pair">
+          <a href="property_details/index.html" class="card">
+            <img src="property_details/screen.png" class="card-thumb" alt="Property Details" loading="lazy" />
+            <div class="card-body">
+              <span class="card-name">Details</span>
+              <span class="theme-pill light"><span class="material-symbols-outlined">light_mode</span>Light</span>
+            </div>
+          </a>
+          <a href="property_details_dark/index.html" class="card" style="background:#1a1c20;">
+            <img src="property_details_dark/screen.png" class="card-thumb" alt="Property Details Dark" loading="lazy" />
+            <div class="card-body" style="background:#1a1c20;">
+              <span class="card-name" style="color:#e2e2e9;">Details</span>
+              <span class="theme-pill dark"><span class="material-symbols-outlined">dark_mode</span>Dark</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Communication Central -->
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:0.9375rem; color:var(--on-surface-variant); padding: 0 0.25rem;">Communication Central</div>
+        <div class="variant-pair">
+          <a href="communication_central/index.html" class="card">
+            <img src="communication_central/screen.png" class="card-thumb" alt="Communication Central" loading="lazy" />
+            <div class="card-body">
+              <span class="card-name">Inbox</span>
+              <span class="theme-pill light"><span class="material-symbols-outlined">light_mode</span>Light</span>
+            </div>
+          </a>
+          <a href="communication_central_dark/index.html" class="card" style="background:#1a1c20;">
+            <img src="communication_central_dark/screen.png" class="card-thumb" alt="Communication Central Dark" loading="lazy" />
+            <div class="card-body" style="background:#1a1c20;">
+              <span class="card-name" style="color:#e2e2e9;">Inbox</span>
+              <span class="theme-pill dark"><span class="material-symbols-outlined">dark_mode</span>Dark</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Operations To-Do -->
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:0.9375rem; color:var(--on-surface-variant); padding: 0 0.25rem;">Operations To-Do List</div>
+        <div class="variant-pair">
+          <a href="operations_to_do_list/index.html" class="card">
+            <img src="operations_to_do_list/screen.png" class="card-thumb" alt="Operations To-Do" loading="lazy" />
+            <div class="card-body">
+              <span class="card-name">Tasks</span>
+              <span class="theme-pill light"><span class="material-symbols-outlined">light_mode</span>Light</span>
+            </div>
+          </a>
+          <a href="operations_to_do_list_dark/index.html" class="card" style="background:#1a1c20;">
+            <img src="operations_to_do_list_dark/screen.png" class="card-thumb" alt="Operations To-Do Dark" loading="lazy" />
+            <div class="card-body" style="background:#1a1c20;">
+              <span class="card-name" style="color:#e2e2e9;">Tasks</span>
+              <span class="theme-pill dark"><span class="material-symbols-outlined">dark_mode</span>Dark</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Light-only pages -->
+    <div class="section-label">Individual pages</div>
+    <div class="grid">
+
+      <a href="financial_dashboard/index.html" class="card">
+        <img src="financial_dashboard/screen.png" class="card-thumb" alt="Financial Dashboard" loading="lazy" />
+        <div class="card-body">
+          <span class="card-name">Financial Dashboard</span>
+          <span class="card-desc">Portfolio revenue, NOI, expenses, and top performers</span>
+        </div>
+      </a>
+
+      <a href="rent_management/index.html" class="card">
+        <img src="rent_management/screen.png" class="card-thumb" alt="Rent Management" loading="lazy" />
+        <div class="card-body">
+          <span class="card-name">Rent Management</span>
+          <span class="card-desc">Long-term rent collection, payment history, and tenants</span>
+        </div>
+      </a>
+
+      <a href="short_term_rent_management/index.html" class="card">
+        <img src="short_term_rent_management/screen.png" class="card-thumb" alt="Short-Term Rent Management" loading="lazy" />
+        <div class="card-body">
+          <span class="card-name">Short-Term Rentals</span>
+          <span class="card-desc">Airbnb/VRBO analytics, platform breakdown, and payouts</span>
+        </div>
+      </a>
+
+      <a href="document_management/index.html" class="card">
+        <img src="document_management/screen.png" class="card-thumb" alt="Document Management" loading="lazy" />
+        <div class="card-body">
+          <span class="card-name">Document Management</span>
+          <span class="card-desc">File organization, property folders, and storage</span>
+        </div>
+      </a>
+
+      <a href="marketing_hub/index.html" class="card">
+        <img src="marketing_hub/screen.png" class="card-thumb" alt="Marketing Hub" loading="lazy" />
+        <div class="card-body">
+          <span class="card-name">Marketing Hub</span>
+          <span class="card-desc">Campaign creator, property pulse, and lead tracker</span>
+        </div>
+      </a>
+
+      <a href="report_generator/index.html" class="card">
+        <img src="report_generator/screen.png" class="card-thumb" alt="Report Generator" loading="lazy" />
+        <div class="card-body">
+          <span class="card-name">Report Generator</span>
+          <span class="card-desc">Financial reports, filters, and export options</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+</body>
+</html>

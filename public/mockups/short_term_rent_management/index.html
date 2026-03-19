@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rent Management - Short-Term Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#265dad",
+              "tertiary": "#005148",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#e6f6ff",
+              "inverse-on-surface": "#dff4ff",
+              "surface-dim": "#c7dde9",
+              "on-tertiary-fixed": "#00201c",
+              "on-primary": "#ffffff",
+              "background": "#f3faff",
+              "on-tertiary-container": "#84ebda",
+              "secondary-fixed": "#cbe7f5",
+              "on-secondary-fixed": "#021f29",
+              "surface-bright": "#f3faff",
+              "outline-variant": "#c3c6d6",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#d7e2ff",
+              "surface-variant": "#cfe6f2",
+              "surface-container": "#dbf1fe",
+              "outline": "#737785",
+              "secondary-container": "#cbe7f5",
+              "on-error": "#ffffff",
+              "inverse-surface": "#1e333c",
+              "inverse-primary": "#abc7ff",
+              "on-surface-variant": "#424654",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#304a55",
+              "tertiary-container": "#006b60",
+              "surface": "#f3faff",
+              "on-surface": "#071e27",
+              "surface-container-highest": "#cfe6f2",
+              "on-background": "#071e27",
+              "on-primary-container": "#c8d9ff",
+              "on-tertiary": "#ffffff",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#afcbd8",
+              "on-secondary-container": "#4e6874",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#8df5e4",
+              "surface-container-high": "#d5ecf8",
+              "on-tertiary-fixed-variant": "#005048",
+              "tertiary-fixed-dim": "#70d8c8",
+              "on-primary-fixed": "#001b3f",
+              "secondary": "#48626e",
+              "on-primary-fixed-variant": "#00458f",
+              "primary": "#004590",
+              "primary-fixed-dim": "#abc7ff",
+              "surface-tint": "#255dad"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3faff;
+            color: #071e27;
+        }
+        .estate-gradient {
+            background: linear-gradient(135deg, #004590 0%, #265dad 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- MOCKUP_NAV_START -->
+<nav id="mockup-nav" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#004590;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 1rem;height:2.75rem;font-family:'Inter',sans-serif;font-size:0.8125rem;gap:0.5rem;box-sizing:border-box;">
+  <a href="../index.html" style="color:rgba(255,255,255,0.85);text-decoration:none;display:flex;align-items:center;gap:0.3rem;white-space:nowrap;padding:0.25rem 0.5rem;border-radius:0.375rem;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">← Index</a>
+  <span style="font-weight:600;color:white;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;text-align:center;">Short-Term Rentals</span>
+  <div style="display:flex;gap:0.25rem;align-items:center;"><a href="../rent_management/index.html" style="color:rgba(255,255,255,0.85);text-decoration:none;display:flex;align-items:center;gap:0.3rem;white-space:nowrap;padding:0.25rem 0.5rem;border-radius:0.375rem;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">← Prev</a><a href="../communication_central/index.html" style="color:rgba(255,255,255,0.85);text-decoration:none;display:flex;align-items:center;gap:0.3rem;white-space:nowrap;padding:0.25rem 0.5rem;border-radius:0.375rem;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">Next →</a></div>
+</nav>
+<style>#mockup-nav + * { margin-top: 0 !important; } body { padding-top: 2.75rem !important; }</style>
+<!-- MOCKUP_NAV_END -->
+
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-[#e6f6ff] no-border">
+<div class="flex items-center justify-between px-8 py-6 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#004590] text-2xl">menu</span>
+<h1 class="font-['Manrope'] font-semibold text-2xl tracking-tight text-[#004590]">Rent Management</h1>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<nav class="flex gap-6">
+<a class="text-[#004590] font-bold transition-all opacity-100" href="#">Portfolio</a>
+<a class="text-[#004590] font-bold transition-all opacity-100" href="#">Rent</a>
+<a class="text-slate-500 hover:text-[#004590] transition-colors" href="#">Leases</a>
+<a class="text-slate-500 hover:text-[#004590] transition-colors" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Professional headshot of a property manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0hgDUify8y9N9Ys4yqM4lKkpmVT7GmbXHw2_obcuEYTrLBfq4BvnQE0j4P_NyOR7t_hdciKBT1-kdZvxsgEkpThZW6BIFilXo94GJ0ZK-lv1bIQqXb_BloMidgQPPZgHOcVXojFg0batudrtq1o8CSDJuPzp1eUlzFP7_kowLRpPYozs3RGLTDp88bc-s3YFRjzwGMRmD0Hs64eqpdsRDpsTBI9pwRmspG8Q24Yf4bP5nTIkcHshjisNOgWldTxoLHc4hgpBdoQ_K"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-8 mt-12">
+<!-- Dashboard Header & Toggle -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+<div>
+<span class="font-label text-label-sm uppercase tracking-widest text-primary font-bold mb-2 block">Executive Overview</span>
+<h2 class="font-headline text-display-lg text-on-surface leading-none">Short-Term Performance</h2>
+</div>
+<!-- Rental Type Toggle -->
+<div class="bg-surface-container-highest p-1.5 rounded-full flex items-center shadow-inner">
+<button class="px-6 py-2 rounded-full text-sm font-semibold text-slate-500 transition-all">Long-Term</button>
+<button class="px-6 py-2 rounded-full text-sm font-bold bg-white text-primary shadow-sm transition-all">Short-Term</button>
+</div>
+</div>
+<!-- Bento Grid Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+<!-- Hero Metric: Upcoming Payouts -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-8 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 estate-gradient opacity-5 rounded-full -mr-20 -mt-20"></div>
+<div>
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary">payments</span>
+<span class="font-label text-label-sm font-bold uppercase tracking-wider text-secondary">Upcoming Payouts</span>
+</div>
+<div class="flex items-baseline gap-4">
+<span class="font-headline text-5xl font-bold text-on-surface">$24,850.00</span>
+<span class="text-tertiary font-bold flex items-center text-sm bg-tertiary/10 px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span> +12.4%
+                        </span>
+</div>
+<p class="text-on-surface-variant mt-2 text-sm">Scheduled for release within the next 7 business days</p>
+</div>
+<div class="mt-12 flex gap-12">
+<div>
+<span class="block text-xs text-slate-400 font-bold uppercase tracking-tighter mb-1">Airbnb</span>
+<span class="text-xl font-bold text-on-surface">$14,200</span>
+</div>
+<div>
+<span class="block text-xs text-slate-400 font-bold uppercase tracking-tighter mb-1">VRBO</span>
+<span class="text-xl font-bold text-on-surface">$8,450</span>
+</div>
+<div>
+<span class="block text-xs text-slate-400 font-bold uppercase tracking-tighter mb-1">Direct</span>
+<span class="text-xl font-bold text-on-surface">$2,200</span>
+</div>
+</div>
+</div>
+<!-- Booking Velocity -->
+<div class="md:col-span-4 space-y-8">
+<div class="bg-surface-container-low rounded-xl p-6 border-l-4 border-primary">
+<span class="font-label text-label-sm font-bold uppercase tracking-wider text-primary mb-4 block">Occupancy Rate</span>
+<div class="flex items-end justify-between">
+<span class="text-4xl font-bold text-on-surface">94.2%</span>
+<div class="w-24 h-2 bg-surface-container-highest rounded-full overflow-hidden mb-2">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+<p class="text-xs text-slate-500 mt-2">Peak Season (June - August)</p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 border-l-4 border-tertiary">
+<span class="font-label text-label-sm font-bold uppercase tracking-wider text-tertiary mb-4 block">Avg. Nightly Rate</span>
+<div class="flex items-end justify-between">
+<span class="text-4xl font-bold text-on-surface">$412</span>
+<span class="material-symbols-outlined text-tertiary text-3xl">analytics</span>
+</div>
+<p class="text-xs text-slate-500 mt-2">Optimized via Dynamic Pricing</p>
+</div>
+</div>
+</div>
+<!-- Section: Platform Breakdown & Transactions -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+<!-- Platform Breakdown -->
+<div class="lg:col-span-1">
+<h3 class="font-headline text-xl text-on-surface mb-6">Platform Performance</h3>
+<div class="space-y-4">
+<!-- Airbnb -->
+<div class="bg-white p-5 rounded-xl flex items-center justify-between group cursor-pointer hover:bg-primary/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-[#FF385C]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#FF385C]">home</span>
+</div>
+<div>
+<span class="font-bold text-on-surface block">Airbnb</span>
+<span class="text-xs text-slate-400">58% of total revenue</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- VRBO -->
+<div class="bg-white p-5 rounded-xl flex items-center justify-between group cursor-pointer hover:bg-primary/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-[#002F6C]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#002F6C]">holiday_village</span>
+</div>
+<div>
+<span class="font-bold text-on-surface block">VRBO</span>
+<span class="text-xs text-slate-400">34% of total revenue</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Direct -->
+<div class="bg-white p-5 rounded-xl flex items-center justify-between group cursor-pointer hover:bg-primary/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">language</span>
+</div>
+<div>
+<span class="font-bold text-on-surface block">Direct Booking</span>
+<span class="text-xs text-slate-400">8% of total revenue</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Recent Transactions -->
+<div class="lg:col-span-2">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline text-xl text-on-surface">Recent Guest Transactions</h3>
+<button class="text-primary font-bold text-sm hover:underline">View All Records</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-slate-400 font-bold">Guest / Platform</th>
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-slate-400 font-bold">Dates</th>
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-slate-400 font-bold">Amount</th>
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-slate-400 font-bold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Transaction 1 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center overflow-hidden">
+<img alt="Guest" class="w-full h-full object-cover" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvXcO4DFg2Sq8f_2Ug6itdX3q3doRMgByGQYHjJQF3ME1fpLW5-ne1g0wxCPm_IgXWMnz2XWimPC0lly3TY3pK55WhdJF4TOZRo-JGQensQ_8jcEF3_cLfS5W5b6COflzLPMwXomV7QmI6GRKYRCIpOcAeCvgYZ-FfL6e1aOyue5P0uYPK7yKDO3v4EK2mRuGehzDC4XE02w0BCkLoz2DVLo_ealAURtSOzD6VSnKz7Cf7bI5X3GoyF0QNllQ2VTcX4HDmaQ0aLduT"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Marcus Thorne</p>
+<p class="text-[10px] text-[#FF385C] font-bold uppercase">Airbnb</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface">Oct 12 - Oct 15</p>
+<p class="text-[10px] text-slate-400">3 Nights</p>
+</td>
+<td class="px-6 py-5 font-bold text-sm text-on-surface">$1,452.00</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-tertiary/10 text-tertiary">Paid</span>
+</td>
+</tr>
+<!-- Transaction 2 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center overflow-hidden">
+<img alt="Guest" class="w-full h-full object-cover" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALENShGZUWCw2Lzs75i8MIciLcqqAGC1cYojG5jmoi0xmoR_DpQpjrHlPIyB8QaUbQHHh1lNp10u-RWljFxcoPDZaKjauXp_FSPynUY5AVjKbW0YmE6BUU2ExBl7qoxR6HmgWHMsDg55PIOuGFymebK8VjuALprHfADJG3xrmfbZIY8Vvk_ps3vD_F03w3-pW_mcs4qRqv61-vbU_vlAUOFCH9FkUIO2954tQ0HNnwV5DGPfy05F00mF98uEwwBBiyQF6jz28Z27ET"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Elena Rodriguez</p>
+<p class="text-[10px] text-[#002F6C] font-bold uppercase">VRBO</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface">Oct 18 - Oct 25</p>
+<p class="text-[10px] text-slate-400">7 Nights</p>
+</td>
+<td class="px-6 py-5 font-bold text-sm text-on-surface">$3,890.00</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-primary/10 text-primary">Pending</span>
+</td>
+</tr>
+<!-- Transaction 3 -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center overflow-hidden">
+<img alt="Guest" class="w-full h-full object-cover" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJeVf0aoqqUEz9BlHgnAfSl_Q1wZE3EWgAaf13Fv0Ls7BsuF5L9aSlBeDFJcLLteHnyrAxzKSSfdn4bqHpftvfcWj3Ks7g559hKMk3dsRyx6SAi0lTx0yoFqxMlRcujUjwC4Nr953GfK6y9OkdOD7pTpHeqTHXUfLCE-hlvSJK-8EJXhcP35Rw9_Cj2_8xq4iWQ8HI9xxitv1Ew2Vzs8V4K5whK0FkRGRhvQrVyefd9vZdtytSqetgMHDoKFXBBfeFXonBWB3EE-nR"/>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">David Chen</p>
+<p class="text-[10px] text-tertiary font-bold uppercase">Direct</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface">Oct 26 - Oct 28</p>
+<p class="text-[10px] text-slate-400">2 Nights</p>
+</td>
+<td class="px-6 py-5 font-bold text-sm text-on-surface">$920.00</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-error-container text-error">Alert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-6 pb-8 pt-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-[#c3c6d6]/15 shadow-[0_-4px_24px_rgba(7,30,39,0.06)] z-50 rounded-t-[1.5rem] md:hidden">
+<div class="flex flex-col items-center justify-center text-slate-400 px-4 py-2">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Portfolio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#004590] bg-[#e6f6ff] rounded-2xl px-4 py-2">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Rent</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-4 py-2">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Leases</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-4 py-2">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Maintenance</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-4 py-2">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-['Inter'] text-[11px] font-bold uppercase tracking-wider">Insights</span>
+</div>
+</nav>
+</body></html>
